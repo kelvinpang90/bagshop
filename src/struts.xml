@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <include file="struts-default.xml"/>
+    <!--指定web应用的默认编码集，相当于调用HttpServletRequest的setCharacterEncoding的方法 -->
+    <constant name="struts.i18n.encoding" value="UTF-8"/>
+    <constant name="struts.action.extension" value="do" />
+    <!--i18n-->
+    <constant name="struts.custom.i18n.resources" value="i18n/message"/>
+    <!-- 开发模式下使用，这样可以打印更详细的错误信息 -->
+    <constant name="struts.devMode" value="false" />
+    <constant name="struts.enable.DynamicMethodInvocation" value="true" />
+    <constant name="struts.multipart.saveDir" value="/opt/temp/upload"/>
+
+
+    <package name="default" namespace="/default" extends="struts-default">
+        <global-results>
+            <result name="global.index">/index.jsp</result>
+            <result name="global.error">/restserver.jsp</result>
+        </global-results>
+
+        <global-exception-mappings>
+            <exception-mapping result="global.error" exception="java.lang.Exception" />
+        </global-exception-mappings>
+    </package>
+
+    <package name="admin" extends="struts-default" namespace="/admin">
+        <action name="/*" class="com.pwk.action.AdminAction" method="{1}"/>
+    </package>
+    <package name="brand" extends="struts-default" namespace="/brand">
+        <action name="/*" class="com.pwk.action.BrandAction" method="{1}"/>
+    </package>
+    <package name="color" extends="struts-default" namespace="/color">
+        <action name="/*" class="com.pwk.action.ColorAction" method="{1}"/>
+    </package>
+    <package name="faq" extends="struts-default" namespace="/faq">
+        <action name="/*" class="com.pwk.action.FAQAction" method="{1}"/>
+    </package>
+    <package name="hotSale" extends="struts-default" namespace="/hotSale">
+        <action name="/*" class="com.pwk.action.HotSaleAction" method="{1}"/>
+    </package>
+    <package name="indexProduct" extends="struts-default" namespace="/indexProduct">
+        <action name="/*" class="com.pwk.action.IndexProductAction" method="{1}"/>
+    </package>
+    <package name="order" extends="struts-default" namespace="/order">
+        <action name="/*" class="com.pwk.action.OrderAction" method="{1}">
+            <result name="order">/order.jsp</result>
+        </action>
+    </package>
+    <package name="product" extends="struts-default" namespace="/product">
+        <action name="/*" class="com.pwk.action.ProductAction" method="{1}">
+            <result name="search">/grid.jsp</result>
+        </action>
+    </package>
+    <package name="shoppingCart" extends="struts-default" namespace="/shoppingCart">
+        <action name="/*" class="com.pwk.action.ShoppingCartAction" method="{1}"/>
+    </package>
+    <package name="user" extends="struts-default" namespace="/user">
+        <action name="/*" class="com.pwk.action.UserAction" method="{1}"/>
+    </package>
+    <package name="indexPic" extends="struts-default" namespace="/indexPic">
+        <action name="/*" class="com.pwk.action.IndexPicAction" method="{1}"/>
+    </package>
+    <package name="indexInfo" extends="struts-default" namespace="/indexInfo">
+        <action name="/*" class="com.pwk.action.IndexInfoAction" method="{1}"/>
+    </package>
+    <package name="aboutUs" extends="struts-default" namespace="/aboutUs">
+        <action name="/*" class="com.pwk.action.AboutUsAction" method="{1}"/>
+    </package>
+    <package name="video" extends="struts-default" namespace="/video">
+        <action name="/*" class="com.pwk.action.VideoAction" method="{1}"/>
+    </package>
+    <package name="location" extends="struts-default" namespace="/location">
+        <action name="/*" class="com.pwk.action.LocationAction" method="{1}"/>
+    </package>
+    <package name="image" extends="struts-default" namespace="/image">
+        <action name="/*" class="com.pwk.action.ImageAction" method="{1}"/>
+    </package>
+    <package name="timer" extends="struts-default" namespace="/timer">
+        <action name="/*" class="com.pwk.action.TimerAction" method="{1}"/>
+    </package>
+    <package name="pv" extends="struts-default" namespace="/pv">
+        <action name="/*" class="com.pwk.action.PVAction" method="{1}"/>
+    </package>
+    <package name="attribute" extends="struts-default" namespace="/attribute">
+        <action name="/*" class="com.pwk.action.AttributeAction" method="{1}"/>
+    </package>
+    <package name="category" extends="struts-default" namespace="/category">
+        <action name="/*" class="com.pwk.action.CategoryAction" method="{1}"/>
+    </package>
+</struts>

@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE urlrewrite PUBLIC "-//tuckey.org//DTD UrlRewrite 3.1//EN"
+        "http://tuckey.org/res/dtds/urlrewrite3.1.dtd">
+<urlrewrite>
+    <rule>
+        <note>
+            index页面跳转
+        </note>
+        <from>^/index.html$</from>
+        <to type="forward">/index.jsp</to>
+    </rule>
+
+    <rule>
+        <note>
+            cart页面跳转
+        </note>
+        <from>^/cart.html$</from>
+        <to type="forward">/cart.jsp</to>
+    </rule>
+
+    <rule>
+        <note>
+            order页面跳转
+        </note>
+        <from>^/order.html$</from>
+        <to type="forward">/order.jsp</to>
+    </rule>
+
+    <rule>
+        <note>
+            orderConfirm页面跳转
+        </note>
+        <from>^/orderConfirm.html$</from>
+        <to type="forward">/orderConfirm.jsp</to>
+    </rule>
+
+    <rule>
+        <note>
+            orderDetail页面跳转
+        </note>
+        <from>^/orderDetail_([a-zA-Z0-9]+).html$</from>
+        <to type="forward">/orderDetail.jsp?orderId=$1</to>
+    </rule>
+
+    <rule>
+        <note>
+            register页面跳转
+        </note>
+        <from>^/register.html$</from>
+        <to type="forward">/register.jsp</to>
+    </rule>
+
+    <rule>
+        <note>
+            restserver页面跳转
+        </note>
+        <from>^/restserver.html$</from>
+        <to type="forward">/restserver.jsp</to>
+    </rule>
+
+    <rule>
+        <note>
+            faq页面跳转
+        </note>
+        <from>^/faq_([a-zA-Z0-9]+).html$</from>
+        <to type="forward">/faq.jsp?id=$1</to>
+    </rule>
+
+    <rule>
+        <note>
+            aboutUs页面跳转
+        </note>
+        <from>^/aboutUs.html$</from>
+        <to type="forward">/aboutUs.jsp</to>
+    </rule>
+
+    <rule>
+        <note>
+            information页面跳转
+        </note>
+        <from>^/information.html$</from>
+        <to type="forward">/information.jsp</to>
+    </rule>
+
+    <rule>
+        <note>
+            review页面跳转
+        </note>
+        <from>^/review.html$</from>
+        <to type="forward">/review.jsp</to>
+    </rule>
+
+    <rule>
+        <note>
+            changePassword页面跳转
+        </note>
+        <from>^/changePassword.html$</from>
+        <to type="forward">/changePassword.jsp</to>
+    </rule>
+
+    <rule>
+        <note>
+            forgetPassword页面跳转
+        </note>
+        <from>^/forgetPassword.html$</from>
+        <to type="forward">/forgetPassword.jsp</to>
+    </rule>
+
+    <rule>
+        <note>
+            video页面跳转
+        </note>
+        <from>^/playVideo_([a-zA-Z0-9]+).html$</from>
+        <to type="forward">/playVideo.jsp?id=$1</to>
+    </rule>
+
+    <rule>
+        <note>
+            grid页面跳转(品牌)
+        </note>
+        <from>^/grid_([a-zA-Z0-9]+).html$</from>
+        <to type="forward">/grid.jsp?bId=$1</to>
+    </rule>
+
+    <rule>
+        <note>
+            grid页面跳转(类型)
+        </note>
+        <from>^/grid_c_([a-zA-Z0-9]+).html$</from>
+        <to type="forward">/grid.jsp?cId=$1</to>
+    </rule>
+
+    <rule>
+        <note>
+            grid搜索页面跳转
+        </note>
+        <from>^/grid__(.*).html$</from>
+        <to type="forward">/grid.jsp?keyword=$1</to>
+    </rule>
+
+    <rule>
+        <note>
+            list页面跳转
+        </note>
+        <from>^/list_([a-zA-Z0-9]+).html$</from>
+        <to type="forward">/list.jsp?bId=$1</to>
+    </rule>
+
+    <rule>
+        <note>
+            detail页面跳转
+        </note>
+        <from>^/details_([a-zA-Z0-9]+).html$</from>
+        <to type="forward">/details.jsp?id=$1</to>
+    </rule>
+</urlrewrite>

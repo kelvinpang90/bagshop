@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<decorators defaultdir="/decorators">
+    <excludes>
+        <pattern>/back/login/*</pattern>
+        <pattern>/back/exclude/*</pattern>
+    </excludes>
+    <decorator name="admin" page="admin.jsp">
+        <pattern>/back/*</pattern>
+    </decorator>
+</decorators>

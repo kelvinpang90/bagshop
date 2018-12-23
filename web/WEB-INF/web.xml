@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://java.sun.com/xml/ns/javaee
+		  http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
+         version="2.5">
+
+    <!--<context-param>-->
+    <!--<param-name>contextConfigLocation</param-name>-->
+    <!--<param-value>/WEB-INF/spring.xml</param-value>-->
+    <!--</context-param>-->
+    <!--struts2-->
+    <filter>
+        <filter-name>struts2</filter-name>
+        <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>struts2</filter-name>
+        <url-pattern>/*.do</url-pattern>
+    </filter-mapping>
+
+    <filter>
+        <filter-name>encoding</filter-name>
+        <filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+        <init-param>
+            <param-name>encoding</param-name>
+            <param-value>UTF-8</param-value>
+        </init-param>
+    </filter>
+
+    <!--loginFilter-->
+    <filter>
+        <filter-name>LoginFilter</filter-name>
+        <filter-class>com.pwk.tools.LoginFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>LoginFilter</filter-name>
+        <url-pattern>/back/*</url-pattern>
+    </filter-mapping>
+
+    <!--解决乱码-->
+    <filter-mapping>
+        <filter-name>encoding</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <!--伪静态化-->
+    <filter>
+        <filter-name>UrlRewriteFilter</filter-name>
+        <filter-class>
+            org.tuckey.web.filters.urlrewrite.UrlRewriteFilter
+        </filter-class>
+        <init-param>
+            <param-name>logLevel</param-name>
+            <param-value>commons</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>UrlRewriteFilter</filter-name>
+        <url-pattern>/*</url-pattern>
+    </filter-mapping>
+
+    <!--sitemesh-->
+    <filter>
+        <filter-name>sitemesh</filter-name>
+        <filter-class>com.opensymphony.sitemesh.webapp.SiteMeshFilter</filter-class>
+    </filter>
+    <filter-mapping>
+        <filter-name>sitemesh</filter-name>
+        <url-pattern>*.jsp</url-pattern>
+    </filter-mapping>
+
+    <jsp-config>
+        <taglib>
+            <taglib-uri>http://www.pwk.com</taglib-uri>
+            <taglib-location>/WEB-INF/pwk.tld</taglib-location>
+        </taglib>
+    </jsp-config>
+
+    <!--Spring-->
+    <context-param>
+        <param-name>contextConfigLocation</param-name>
+        <param-value>/WEB-INF/spring.xml;/WEB-INF/spring-mail.xml</param-value>
+    </context-param>
+
+    <listener>
+        <listener-class>
+            org.springframework.web.context.ContextLoaderListener
+        </listener-class>
+    </listener>
+
+    <listener>
+        <listener-class>
+            com.pwk.listener.OnlineListener
+        </listener-class>
+    </listener>
+
+    <!--验证码-->
+    <servlet>
+        <servlet-name>ValidateCode</servlet-name>
+        <servlet-class>com.pwk.Servlet.ValidateCode</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ValidateCode</servlet-name>
+        <url-pattern>/validateCode</url-pattern>
+    </servlet-mapping>
+
+    <!--图片上传-->
+    <servlet>
+        <servlet-name>ColorUpload</servlet-name>
+        <servlet-class>com.pwk.Servlet.ColorImageUpload</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ColorUpload</servlet-name>
+        <url-pattern>/colorUpload</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ProductUpload</servlet-name>
+        <servlet-class>com.pwk.Servlet.ProductImageUpload</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>ProductUpload</servlet-name>
+        <url-pattern>/productUpload</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>IndexPicUpload</servlet-name>
+        <servlet-class>com.pwk.Servlet.IndexPicUpload</servlet-class>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>IndexPicUpload</servlet-name>
+        <url-pattern>/indexPicUpload</url-pattern>
+    </servlet-mapping>
+
+    <!--CK Finder-->
+    <servlet>
+        <servlet-name>ConnectorServlet</servlet-name>
+        <servlet-class>com.ckfinder.connector.ConnectorServlet</servlet-class>
+        <init-param>
+            <param-name>XMLConfig</param-name>
+            <param-value>/WEB-INF/config_ck.xml</param-value>
+        </init-param>
+        <init-param>
+            <param-name>debug</param-name>
+            <param-value>false</param-value>
+        </init-param>
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ConnectorServlet</servlet-name>
+        <url-pattern>
+            /ckfinder/core/connector/java/connector.java
+        </url-pattern>
+    </servlet-mapping>
+    <filter>
+        <filter-name>FileUploadFilter</filter-name>
+        <filter-class>com.ckfinder.connector.FileUploadFilter</filter-class>
+        <init-param>
+            <param-name>sessionCookieName</param-name>
+            <param-value>JSESSIONID</param-value>
+        </init-param>
+        <init-param>
+            <param-name>sessionParameterName</param-name>
+            <param-value>jsessionid</param-value>
+        </init-param>
+    </filter>
+    <filter-mapping>
+        <filter-name>FileUploadFilter</filter-name>
+        <url-pattern>
+            /ckfinder/core/connector/java/connector.java
+        </url-pattern>
+    </filter-mapping>
+
+    <welcome-file-list>
+        <welcome-file>/index.jsp</welcome-file>
+    </welcome-file-list>
+
+    <error-page>
+        <error-code>404</error-code>
+        <location>/index.jsp</location>
+    </error-page>
+
+    <error-page>
+        <error-code>400</error-code>
+        <location>/index.jsp</location>
+    </error-page>
+
+    <error-page>
+        <error-code>403</error-code>
+        <location>/index.jsp</location>
+    </error-page>
+
+    <error-page>
+        <error-code>404</error-code>
+        <location>/index.jsp</location>
+    </error-page>
+
+    <error-page>
+        <error-code>500</error-code>
+        <location>/</location>
+    </error-page>
+</web-app>
